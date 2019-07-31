@@ -3,6 +3,8 @@
     <string name="iniciar">Iniciar</string>
     <string name="clique_abaixo_para_iniciar_o_formulario">Clique abaixo para iniciar o formulario</string>
     <string name="textview">clique abaixo para iniciar o formulario</string>
+    <string name="todo">TODO</string>
+    <string name="todo1">TODO</string>
 
 
     <string-array name="valores">

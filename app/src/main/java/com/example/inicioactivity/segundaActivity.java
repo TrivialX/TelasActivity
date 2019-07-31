@@ -22,17 +22,30 @@ public class segundaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_segunda);
+
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> listview, View itemView, int position, long id) {
                 String time = "";
                 AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
-                builder.setTitle("Titulo");
-                builder.setMessage("Qualifique este software");
-                builder.setPositiveButton("Positivo", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        Toast.makeText(segundaActivity.this, "positivo=" + arg1, Toast.LENGTH_SHORT).show();
+                builder.setTitle("Aviso");
+                builder.setMessage("Não poderá mudar, desejar continuar?");
+
+                DialogInterface.OnClickListener btnSim = new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Intent intent = new Intent(getApplicationContext(), terceiraActivity.class);
+                        startActivity(intent);
                     }
-                }).show();
+                };
+                DialogInterface.OnClickListener btnNao = new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        
+                    }
+                };
+                builder.setPositiveButton("Sim", btnSim);
+                builder.setNegativeButton("Sim", btnNao);
+                builder.create().show();
+
                 if (position == 0) {
                     time = "Escolheu -> Brasil";
                 } else if (position == 1) {
@@ -40,7 +53,7 @@ public class segundaActivity extends AppCompatActivity {
                 }
                 Bundle bundle = new Bundle();
                 bundle.putString("paisEscolhido", time);
-                Intent intent = new Intent(getBaseContext(), terceiraActivity.class);
+                Intent intent = new Intent(getBaseContext(), segundaActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
