@@ -1,9 +1,13 @@
 package com.example.inicioactivity;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,43 +27,49 @@ public class segundaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_segunda);
 
-        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> listview, View itemView, int position, long id) {
-                String time = "";
-                AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
-                builder.setTitle("Aviso");
-                builder.setMessage("Não poderá mudar, desejar continuar?");
+        final Bundle bundle = new Bundle();
+        final Intent intent = new Intent(getBaseContext(), terceiraActivity.class);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Atenção!!");
+        builder.setMessage("A escolha não poderá ser trocada, deseja continuar?");
 
-                DialogInterface.OnClickListener btnSim = new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        Intent intent = new Intent(getApplicationContext(), terceiraActivity.class);
-                        startActivity(intent);
-                    }
-                };
-                DialogInterface.OnClickListener btnNao = new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                };
-                builder.setPositiveButton("Sim", btnSim);
-                builder.setNegativeButton("Sim", btnNao);
-                builder.create().show();
-
-                if (position == 0) {
-                    time = "Escolheu -> Brasil";
-                } else if (position == 1) {
-                    time = " Escolher -> Portugal";
-                }
-                Bundle bundle = new Bundle();
-                bundle.putString("paisEscolhido", time);
-                Intent intent = new Intent(getBaseContext(), segundaActivity.class);
-                intent.putExtras(bundle);
+        DialogInterface.OnClickListener positivo = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
                 startActivity(intent);
             }
         };
+        DialogInterface.OnClickListener negativo = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "Escolha um país para continuar", Toast.LENGTH_SHORT).show();
+            }
+        };
+        builder.setNegativeButton("Voltar", negativo);
+        builder.setPositiveButton("Continuar", positivo);
+
+        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> listview, View itemView, int position, long id) {
+                String time = "";
+
+                if (position == 0) {
+                    time = "Escolheu -> Brasil";
+                    builder.create().show();
+                    bundle.putString("paisEscolhido", time);
+                    intent.putExtras(bundle);
+
+                } else if (position == 1) {
+                    time = " Escolher -> Portugal";
+                    builder.create().show();
+                    bundle.putString("paisEscolhido", time);
+                    intent.putExtras(bundle);
+                }
+            }
+        };
+
         ListView listView = (ListView) findViewById(R.id.paisesID);
-        listView.setOnItemClickListener(itemClickListener);{
+        listView.setOnItemClickListener(itemClickListener);
+        {
         }
         ArrayList<String> paises = new ArrayList<String>();
         paises.add("Brasil");
@@ -72,6 +82,4 @@ public class segundaActivity extends AppCompatActivity {
 
         lista.setAdapter(adapter);
     }
-    }
-
-
+}

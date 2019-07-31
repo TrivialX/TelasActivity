@@ -1,15 +1,17 @@
 <resources>
     <string name="app_name">InicioActivity</string>
     <string name="iniciar">Iniciar</string>
-    <string name="clique_abaixo_para_iniciar_o_formulario">Clique abaixo para iniciar o formulario</string>
-    <string name="textview">clique abaixo para iniciar o formulario</string>
+    <string name="clique_abaixo_para_começar">Clique abaixo para começar</string>
+    <string name="textview">clique abaixo para começar</string>
     <string name="todo">TODO</string>
     <string name="todo1">TODO</string>
+    <string name="textview2">TextView</string>
+    <string name="pronto">Pronto</string>
 
 
     <string-array name="valores">
-    <item>Portugal</item>
-    <item>Brasil</item>
+        <item>Portugal</item>
+        <item>Brasil</item>
     </string-array>
 
 </resources>
