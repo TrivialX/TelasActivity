@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".finalActivity"></activity>
-        <activity android:name=".terceiraActivity" />
-        <activity android:name=".segundaActivity" />
+        <activity android:name=".FinalActivity"></activity>
+        <activity android:name=".TerceiraActivity" />
+        <activity android:name=".SegundaActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

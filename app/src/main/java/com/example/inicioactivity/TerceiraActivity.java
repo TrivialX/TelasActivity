@@ -1,15 +1,12 @@
 package com.example.inicioactivity;
 
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class terceiraActivity extends AppCompatActivity {
+public class TerceiraActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +20,7 @@ public class terceiraActivity extends AppCompatActivity {
     }
 
     public void pronto(View v) {
-        Intent intent = new Intent(this, finalActivity.class);
+        Intent intent = new Intent(this, FinalActivity.class);
         startActivity(intent);
     }
 }

@@ -1,13 +1,7 @@
 package com.example.inicioactivity;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,12 +9,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class segundaActivity extends AppCompatActivity {
+public class SegundaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +21,7 @@ public class segundaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_segunda);
 
         final Bundle bundle = new Bundle();
-        final Intent intent = new Intent(getBaseContext(), terceiraActivity.class);
+        final Intent intent = new Intent(getBaseContext(), TerceiraActivity.class);
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Atenção!!");
         builder.setMessage("A escolha não poderá ser trocada, deseja continuar?");
@@ -51,12 +44,12 @@ public class segundaActivity extends AppCompatActivity {
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> listview, View itemView, int position, long id) {
                 String time = "";
-
                 if (position == 0) {
                     time = "Escolheu -> Brasil";
                     builder.create().show();
                     bundle.putString("paisEscolhido", time);
                     intent.putExtras(bundle);
+
 
                 } else if (position == 1) {
                     time = " Escolher -> Portugal";
